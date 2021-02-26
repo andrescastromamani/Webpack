@@ -1,11 +1,16 @@
 {
-  "name": "webpack",
+  "name": "webpack-inicial",
   "version": "1.0.0",
   "description": "Este es el cascaron de un proyecto en webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "author": "Andres Castro Mamani",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
 }
