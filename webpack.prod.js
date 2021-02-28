@@ -4,17 +4,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const CopyPlugin = require('copy-webpack-plugin');
+const MinifyPlugin = require("babel-minify-webpack-plugin");
+
 
 module.exports = {
     mode: 'production',
     optimization: {
         minimizer: [new OptimizeCssAssetsPlugin()]
     },
-    output:{
+    output: {
         filename: 'main.[contenthash].js'
     },
     module: {
         rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                }
+            },
             {
                 test: /\.css$/,
                 exclude: /styles\.css$/,
@@ -50,6 +59,6 @@ module.exports = {
                 { from: "src/assets", to: "assets/" },
             ],
         }),
-
+        new MinifyPlugin()
     ],
 }
